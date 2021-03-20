@@ -1,0 +1,47 @@
+@page "/entry"
+
+<p>
+    Enter your name: <input type="text" bind="@Name" /><br />
+    What is your age? <input type="number" bind="@Age" /> <br />
+    What is your Salary? <input type="number" bind="@Salary" /> <br />
+
+    When is your Birthday (culture-invariant default format)?<input type="text" bind="@Birthday" /><br />
+    When is your Birthday (UK date Format)?<input type="text" bind="@Birthday" format-value="dd/MM/yyyy" /> <br />
+
+    Are you a Manager? <input type="checkbox" bind="@IsManager" /> <br />
+    this.StateHasChanged();
+    <select id="select-box" bind="@TypeOfEmployee">
+        <option value=@EmployeeType.Employee>@EmployeeType.Employee.ToString()</option>>
+        <option value=@EmployeeType.Contractor>@EmployeeType.Contractor.ToString()</option>>
+        <option value=@EmployeeType.Intern>@EmployeeType.Intern.ToString()</option>
+    </select>
+   
+</p>
+
+<h2>Hello, @Name</h2>
+
+<p>You are @Age years old. You were born on the @Birthday. You are currently a @TypeOfEmployee</p>
+
+@if(IsManager)
+{
+    <p>You are also a manager in this company!</p>
+     
+}
+
+<p>Your Salary is @Salary</p>
+
+
+
+@functions
+{   
+    private enum EmployeeType{ Employee, Contractor, Intern};
+    private EmployeeType TypeOfEmployee{ get; set;} = EmployeeType.Employee;
+
+    private string Name{get; set;} ="Gaz";
+    private bool IsManager{ get; set;} =true;
+    private static int Age {get; set;} = 52;
+    public DateTime Birthday{get; set;} = DateTime.Today.AddYears(-Age);
+
+    public decimal Salary {get; set;} = (decimal) 50000;
+    
+}

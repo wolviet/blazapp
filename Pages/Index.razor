@@ -1,0 +1,94 @@
+﻿@page "/"
+
+<head>
+ <h1>Hotel Locations</h1>
+</head>
+<BSButtonGroup>
+    <BSDropdown>
+        <BSDropdownToggle Color="Color.Secondary" Size="Size.Small">Small button</BSDropdownToggle>
+        <BSDropdownMenu>
+            <BSDropdownItem Href="javascript:void(0);">Action</BSDropdownItem>
+            <BSDropdownItem Href="javascript:void(0);">Another Action</BSDropdownItem>
+            <BSDropdownItem Href="javascript:void(0);">Yet Another Action</BSDropdownItem>
+        </BSDropdownMenu>
+    </BSDropdown>
+    <BSDropdown>
+        <BSButtonGroup>
+            <BSButton Size="Size.Small" Color="Color.Secondary">Small split button</BSButton>
+            <BSDropdownToggle Size="Size.Small" IsSplit="true" Color="Color.Secondary"></BSDropdownToggle>
+            <BSDropdownMenu>
+                <BSDropdownItem Href="javascript:void(0);">Action</BSDropdownItem>
+                <BSDropdownItem Href="javascript:void(0);">Another Action</BSDropdownItem>
+                <BSDropdownItem IsDivider="true"></BSDropdownItem>
+                <BSDropdownItem Href="javascript:void(0);">Yet Another Action</BSDropdownItem>
+            </BSDropdownMenu>
+        </BSButtonGroup>
+    </BSDropdown>
+</BSButtonGroup>
+
+<BSCarousel NumberOfItems="@items.Count">
+        <BSCarouselIndicators NumberOfItems="@items.Count"></BSCarouselIndicators>
+        <div class="carousel-inner">
+            
+            @for (int i = 0; i < items.Count; i++)
+            {
+                <BSCarouselItem src="@items[i].Source" alt="@items[i].Alt"></BSCarouselItem>
+            }
+        </div>
+        <BSCarouselControl CarouselDirection="CarouselDirection.Previous" NumberOfItems="@items.Count"></BSCarouselControl>
+        <BSCarouselControl CarouselDirection="CarouselDirection.Next" NumberOfItems="@items.Count"></BSCarouselControl>
+</BSCarousel>
+    
+@code {
+    IList<Item> items = new List<Item>
+    {
+        new Item {
+            Source = "images/firsttest.jpg",
+            Alt ="First Slide",
+            Caption = "Slide 1",
+            Header = "Location 1"
+        },
+        new Item {
+            Source = "images/secondtest.jpg",
+            Alt ="Second Slide",
+            Caption = "Slide 2",
+            Header = "Location 2"
+        },
+        new Item {
+            Source = "images/thirdtest.jpg",
+            Alt ="Third Slide",
+            Caption = "Slide 3",
+            Header = "Location 3"
+        }
+    };
+
+    class Item
+    {
+        public string Source { get; set; }
+        public string Alt { get; set; }
+        public string Caption { get; set; }
+        public string Header { get; set; }
+    }
+}
+
+
+<BSButtonGroup Size="Size.Large">
+    <BSButton Color="Color.Secondary">Left</BSButton>
+    <BSButton Color="Color.Secondary">Middle</BSButton>
+    <BSButton Color="Color.Secondary">Right</BSButton>
+</BSButtonGroup>
+<BSButtonGroup Size="Size.Small">
+    <BSButton Color="Color.Secondary">Left</BSButton>
+    <BSButton Color="Color.Secondary">Middle</BSButton>
+    <BSButton Color="Color.Secondary">Right</BSButton>
+</BSButtonGroup>
+
+
+
+<BSImage IsRounded="true" Alignment="Alignment.Center" src="images/Yoda-02-icon.png" alt="Thumbnail image" />
+<BSImage IsThumbnail="true" src="images/R2D2-02-icon.png" alt="Thumbnail image" />
+
+
+
+
+
