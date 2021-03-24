@@ -24,3 +24,9 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - uses: actions/checkout@v2
+    - uses: tibor19/static-website-deploy@v1
+      with:
+        enabled-static-website: 'true'
+        folder: '$web'
+        connection-string: ${{ secrets.CONNECTION_STRING }}
